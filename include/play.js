@@ -76,15 +76,16 @@ module.exports = {
       if(ampersandPosition != -1) {
         video_id = video_id.substring(0, ampersandPosition);
       };
+      var postedBy = `${message.author}`;
 
       const embeddedMessage = new Discord.MessageEmbed()
-
 	    .setColor('#0099ff')
 	    .setTitle(`🎶 **${song.title}**`)
       .setURL(`${song.url}`)
+      .setDescription(`${message.author}`)
       .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
       .setTimestamp()
-      .setFooter(`${message.author}`);
+      .setFooter(`${author} ` + postedBy);
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
