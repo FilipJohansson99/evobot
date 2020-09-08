@@ -8,7 +8,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
     if (!canModifyQueue(message.member)) return;
-    queue = [];
+    queue.songs.length = 0;
     queue.textChannel.send(`${message.author} ❌ cleared the queue.`);
   }
 };
