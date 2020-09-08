@@ -71,12 +71,20 @@ module.exports = {
         module.exports.play(queue.songs[0], message);
       });
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
-
     try {
+
+      var video_id = window.location.search.split('v=')[1];
+      var ampersandPosition = video_id.indexOf('&');
+      if(ampersandPosition != -1) {
+        video_id = video_id.substring(0, ampersandPosition);
+      };
+
       const embeddedMessage = new Discord.MessageEmbed()
+
 	    .setColor('#0099ff')
 	    .setTitle(`🎶 **${song.title}**`)
-	    .setURL(`${song.url}`)
+      .setURL(`${song.url}`)
+      .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
