@@ -84,7 +84,7 @@ module.exports = {
       .setDescription(`${message.author}`)
       .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
       .setTimestamp()
-      .setFooter(`${user}`);
+      .setFooter(`${name.author}`, `${iconURL.author}`);
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
