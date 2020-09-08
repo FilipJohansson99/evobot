@@ -54,13 +54,11 @@ module.exports = {
         if (collector && !collector.ended) collector.stop();
 
         if (queue.loop) {
-          // if loop is on, push the song back at the end of the queue
-          // so it can repeat endlessly
+
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
           module.exports.play(queue.songs[0], message);
         } else {
-          // Recursively play the next song
           queue.songs.shift();
           module.exports.play(queue.songs[0], message);
         }
@@ -84,14 +82,12 @@ module.exports = {
 	    .setColor('#0099ff')
 	    .setTitle(`🎶 **${song.title}**`)
       .setURL(`${song.url}`)
+      .setDescription(`${user}`)
       .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
-      await playingMessage.react("🔇");
-      await playingMessage.react("🔉");
-      await playingMessage.react("🔊");
       await playingMessage.react("🔁");
       await playingMessage.react("⏹");
     } catch (error) {
@@ -129,42 +125,6 @@ module.exports = {
             queue.connection.dispatcher.resume();
             queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
           }
-          break;
-
-        case "🔇":
-          reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
-          if (queue.volume <= 0) {
-            queue.volume = 100;
-            queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
-            queue.textChannel.send(`${user} 🔊 unmuted the music!`).catch(console.error);
-          } else {
-            queue.volume = 0;
-            queue.connection.dispatcher.setVolumeLogarithmic(0);
-            queue.textChannel.send(`${user} 🔇 muted the music!`).catch(console.error);
-          }
-          break;
-
-        case "🔉":
-          reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
-          if (queue.volume - 10 <= 0) queue.volume = 0;
-          else queue.volume = queue.volume - 10;
-          queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-          queue.textChannel
-            .send(`${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`)
-            .catch(console.error);
-          break;
-
-        case "🔊":
-          reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
-          if (queue.volume + 10 >= 100) queue.volume = 100;
-          else queue.volume = queue.volume + 10;
-          queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-          queue.textChannel
-            .send(`${user} 🔊 increased the volume, the volume is now ${queue.volume}%`)
-            .catch(console.error);
           break;
 
         case "🔁":
