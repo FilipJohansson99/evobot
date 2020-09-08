@@ -82,9 +82,9 @@ module.exports = {
 	    .setColor('#0099ff')
 	    .setTitle(`🎶 **${song.title}**`)
       .setURL(`${song.url}`)
-      .setDescription(`${message.author}`)
       .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter(`${message.author}`);
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
