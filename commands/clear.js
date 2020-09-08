@@ -9,6 +9,7 @@ module.exports = {
     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
     if (!canModifyQueue(message.member)) return;
     queue.songs.length = 0;
+    queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ❌ cleared the queue.`);
   }
 };
