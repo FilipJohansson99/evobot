@@ -75,20 +75,20 @@ module.exports = {
       .setColor("#F8AA2A")
       .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
       .addFields(
-        { name: ' ', value: `${song.title[0]}`, inline: true },
-		{ name: ' ', value: `${song.title[1]}`, inline: true },
+        { name: `${song.title[0]}`, inline: true },
+		{ name: `${song.title[0]}`, inline: true },
       )
       .addFields(
-        { name: ' ', value: `${song.title[2]}`, inline: true },
-		{ name: ' ', value: `${song.title[3]}`, inline: true },
+        { name: `${song.title[0]}`, inline: true },
+		{ name: `${song.title[0]}`, inline: true },
       )
       .addFields( 
-        { name: ' ', value: `${song.title[4]}`, inline: true },
-		{ name: ' ', value: `${song.title[5]}`, inline: true },
+        { name: `${song.title[0]}`, inline: true },
+		{ name: `${song.title[0]}`, inline: true },
       )
       .addFields(
-        { name: ' ', value: `${song.title[6]}`, inline: true },
-		{ name: ' ', value: `${song.title[7]}`, inline: true },
+        { name: `${song.title[0]}`, inline: true },
+		{ name: `${song.title[0]}`, inline: true },
       )
       .setTimestamp();
 
