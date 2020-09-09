@@ -69,17 +69,18 @@ module.exports = {
       }
     }
     var songAmount = 0;
-    for (i = 0; i < 5; i++) {      
+     
         videos.forEach((video) =>  {
           song = {
             title: video.title,
             url: video.url,
             duration: video.durationSeconds,
           };   
+          for (i = 0; i < 5; i++) {     
           queueConstruct.songs.push(song);
-    
+          }
         });
-    }
+    
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
