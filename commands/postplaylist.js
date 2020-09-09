@@ -23,13 +23,6 @@ module.exports = {
       return message
         .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
         .catch(console.error);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
-
-    const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT"))
-      return message.reply("Cannot connect to voice channel, missing permissions");
-    if (!permissions.has("SPEAK"))
-      return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -103,6 +96,9 @@ module.exports = {
       .setColor("#F8AA2A")
       .setTimestamp();
 
+
+      message.channel.send(playlistEmbed);
+
     if (!PRUNING) {
       playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
       if (playlistEmbed.description.length >= 2048)
@@ -113,17 +109,5 @@ module.exports = {
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
 
-    if (!serverQueue) {
-      try {
-        queueConstruct.connection = await channel.join();
-        await queueConstruct.connection.voice.setSelfDeaf(true);
-        play(queueConstruct.songs[0], message);
-      } catch (error) {
-        console.error(error);
-        message.client.queue.delete(message.guild.id);
-        await channel.leave();
-        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
-      }
-    }
   }
 };
