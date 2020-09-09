@@ -92,16 +92,11 @@ module.exports = {
         )
         .setTimestamp();
         
-        playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
         var playingMessage = await queue.textChannel.send(playlistEmbed);
         await playingMessage.react("⏯");
       } catch (error) {
         console.error(error);
       }
-      const filter = (reaction, user) => user.id !== message.client.user.id;
-      var collector = playingMessage.createReactionCollector(filter, {
-        time: song.duration > 0 ? song.duration * 1000 : 600000
-      });
   
       collector.on("collect", (reaction, user) => {
         if (!queue) return;
