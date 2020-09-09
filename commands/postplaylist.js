@@ -26,6 +26,16 @@ module.exports = {
     const url = args[0];
     const urlValid = pattern.test(args[0]);
 
+    const queueConstruct = {
+        textChannel: message.channel,
+        channel,
+        connection: null,
+        songs: [],
+        loop: false,
+        volume: 100,
+        playing: true
+      };
+
     let song = null;
     let playlist = null;
     let videos = [];
@@ -74,25 +84,9 @@ module.exports = {
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
-      .addFields(
-        { name: `${song[0].title}`, inline: true },
-		{ name: `${song[0].title}`, inline: true },
-      )
-      .addFields(
-        { name: `${song[0].title}`, inline: true },
-		{ name: `${song[0].title}`, inline: true },
-      )
-      .addFields( 
-        { name: `${song[0].title}`, inline: true },
-		{ name: `${song[0].title}`, inline: true },
-      )
-      .addFields(
-        { name: `${song[0].title}`, inline: true },
-		{ name: `${song[0].title}`, inline: true },
-      )
       .setTimestamp();
 
-
+      playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
       message.channel.send(playlistEmbed);
 
   }
