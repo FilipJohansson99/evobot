@@ -99,7 +99,7 @@ module.exports = {
       }
   
       collector.on("collect", (reaction, user) => {
-        if (!queue) return;
+        if (queue) return;
         const member = message.guild.member(user);
   
         switch (reaction.emoji.name) {
