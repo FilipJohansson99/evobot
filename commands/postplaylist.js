@@ -12,7 +12,7 @@ module.exports = {
   description: "Play a playlist from youtube",
   async execute(message, args) {
     const { PRUNING } = require("../config.json");
-
+    const { channel } = message.member.voice;
     const { id } = 384501410210906113;
 
     const serverQueue = message.client.queue.get(message.guild.id);
