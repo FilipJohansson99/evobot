@@ -15,7 +15,6 @@ module.exports = {
     const { channel } = message.member.voice;
     const { id } = 384501410210906113;
 
-    const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!args.length)
       return message
@@ -26,16 +25,6 @@ module.exports = {
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
     const url = args[0];
     const urlValid = pattern.test(args[0]);
-
-    const queueConstruct = {
-      textChannel: message.channel,
-      channel,
-      connection: null,
-      songs: [],
-      loop: false,
-      volume: 100,
-      playing: true
-    };
 
     let song = null;
     let playlist = null;
@@ -77,15 +66,7 @@ module.exports = {
         duration: video.durationSeconds
       };
 
-      if (serverQueue) {
-        serverQueue.songs.push(song);
-        if (!PRUNING)
-          message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
-            .catch(console.error);
-      } else {
-        queueConstruct.songs.push(song);
-      }
+
     });
 
     let playlistEmbed = new MessageEmbed()
@@ -96,16 +77,6 @@ module.exports = {
 
 
       message.channel.send(playlistEmbed);
-
-    if (!PRUNING) {
-      playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
-      if (playlistEmbed.description.length >= 2048)
-        playlistEmbed.description =
-          playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
-    }
-    message.channel.id.send(`${message.author} Started a playlist`, playlistEmbed);
-
-    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
 
   }
 };
