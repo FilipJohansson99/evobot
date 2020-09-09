@@ -68,29 +68,59 @@ module.exports = {
         return message.reply("Playlist not found :(").catch(console.error);
       }
     }
-    var songAmount = 0;
-     
-        videos.forEach((video) =>  {
-          song = {
-            title: video.title,
-            url: video.url,
-            duration: video.durationSeconds,
-          };   
-          for (i = 0; i < 5; i++) {     
-          queueConstruct.songs.push(song);
-          }
-        });
-    
+    try {
 
-    let playlistEmbed = new MessageEmbed()
+      videos.forEach((video) =>  {
+        song = {
+          title: video.title,
+          url: video.url,
+          duration: video.durationSeconds,
+        };       
+        queueConstruct.songs.push(song);
+      });
+      
+      
+      let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
-      .setTimestamp();
-
-      playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
-      message.channel.send(playlistEmbed);
-
+      .setDescription(
+        "Det bästa av sovjetisk diskokultur.\n"
+        
+        
+        )
+        .setTimestamp();
+        
+        playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
+        var playingMessage = await queue.textChannel.send(playlistEmbed);
+        await playingMessage.react("⏯");
+      } catch (error) {
+        console.error(error);
+      }
+      const filter = (reaction, user) => user.id !== message.client.user.id;
+      var collector = playingMessage.createReactionCollector(filter, {
+        time: song.duration > 0 ? song.duration * 1000 : 600000
+      });
+  
+      collector.on("collect", (reaction, user) => {
+        if (!queue) return;
+        const member = message.guild.member(user);
+  
+        switch (reaction.emoji.name) {
+          case "⏯":
+            queue.playing = true;
+            reaction.users.remove(user).catch(console.error);
+            if (!canModifyQueue(member)) return;
+            queue.connection.dispatcher.end();
+            queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+            collector.stop();
+            break;
+  
+          default:
+            reaction.users.remove(user).catch(console.error);
+            break;
+        }
+      });
   }
 };
