@@ -74,19 +74,19 @@ module.exports = {
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
-      .setFields(
+      .addFields(
         { value: `${song.title[0]}`, inline: true },
 		{ value: `${song.title[1]}`, inline: true },
       )
-      .setFields(
+      .addFields(
         { value: `${song.title[2]}`, inline: true },
 		{ value: `${song.title[3]}`, inline: true },
       )
-      .setFields(
+      .addFields(
         { value: `${song.title[4]}`, inline: true },
 		{ value: `${song.title[5]}`, inline: true },
       )
-      .setFields(
+      .addFields(
         { value: `${song.title[6]}`, inline: true },
 		{ value: `${song.title[7]}`, inline: true },
       )
