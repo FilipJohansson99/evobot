@@ -75,7 +75,7 @@ module.exports = {
         url: video.url,
         duration: video.durationSeconds
       };
-
+      queueConstruct.songs.push(song);
 
     });
 
