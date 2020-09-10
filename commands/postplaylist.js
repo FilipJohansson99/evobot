@@ -67,12 +67,16 @@ module.exports = {
         return message.reply("Playlist not found :(").catch(console.error);
       }
     }
-      
+    var video_id = window.location.search.split('v=')[1];
+    var ampersandPosition = video_id.indexOf('&');
+    if(ampersandPosition != -1) {
+      video_id = video_id.substring(0, ampersandPosition);
+    }
       let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
       .setURL(playlist.url)
       .setColor("#F8AA2A")
-      .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
+      .setThumbnail(`https://www.youtube.com/embed/videoseries?list=${video_id}`)
       .setDescription(
         "Det bästa av sovjetisk diskokultur.\n"
         
