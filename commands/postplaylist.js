@@ -13,7 +13,6 @@ module.exports = {
   async execute(message, args) {
     const { PRUNING } = require("../config.json");
     const { channel } = message.member.voice;
-    const { id } = 384501410210906113;
 
 
     if (!args.length)
@@ -69,16 +68,6 @@ module.exports = {
       }
     }
     try {
-
-      videos.forEach((video) =>  {
-        song = {
-          title: video.title,
-          url: video.url,
-          duration: video.durationSeconds,
-        };       
-        queueConstruct.songs.push(song);
-      });
-      
       
       let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
@@ -90,7 +79,7 @@ module.exports = {
         
         
         )
-        .setTimestamp();
+        .setFooter(`${playlist.url}`)
         
         var playingMessage = await queue.textChannel.send(playlistEmbed);
         await playingMessage.react("⏯");
@@ -103,16 +92,15 @@ module.exports = {
       });
   
       collector.on("collect", (reaction, user) => {
-        if (queue) return;
         const member = message.guild.member(user);
-  
+
         switch (reaction.emoji.name) {
           case "⏯":
-            queue.playing = true;
             reaction.users.remove(user).catch(console.error);
             if (!canModifyQueue(member)) return;
             queue.connection.dispatcher.end();
-            queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+            play(queueConstruct.songs[0], message);
+            queue.textChannel.send(`${user} ⏯ started the playlist`).catch(console.error);
             collector.stop();
             break;
   
