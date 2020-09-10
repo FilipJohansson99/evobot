@@ -74,7 +74,7 @@ module.exports = {
       .setColor("#F8AA2A")
       .setThumbnail("https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png")
       .setDescription(
-        "Det bästa av sovjetisk diskokultur.\n"
+        "Svenska kommunistsånger, inkluderar **Knutna Nävar** med flera.\n"
         
         
         )
