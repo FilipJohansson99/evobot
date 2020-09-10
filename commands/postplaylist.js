@@ -79,8 +79,8 @@ module.exports = {
       .setColor("#F8AA2A")
       .setThumbnail(`https://www.youtube.com/embed/videoseries?list=${video_id}`)
       .setDescription(
-        "Det bästa av sovjetisk diskokultur.\n"
-        
+        `Det bästa av sovjetisk diskokultur.\n
+        ${video_id}`
         
         )
         .setFooter(`${playlist.url}`)
