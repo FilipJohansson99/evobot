@@ -67,7 +67,6 @@ module.exports = {
         return message.reply("Playlist not found :(").catch(console.error);
       }
     }
-    try {
       
       let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
@@ -80,34 +79,6 @@ module.exports = {
         
         )
         .setFooter(`${playlist.url}`)
-        
-        var playingMessage = await queue.textChannel.send(playlistEmbed);
-        await playingMessage.react("⏯");
-      } catch (error) {
-        console.error(error);
+    
       }
-      const filter = (reaction, user) => user.id !== message.client.user.id;
-      var collector = playingMessage.createReactionCollector(filter, {
-        time: song.duration > 0 ? song.duration * 1000 : 600000
-      });
-  
-      collector.on("collect", (reaction, user) => {
-        const member = message.guild.member(user);
-
-        switch (reaction.emoji.name) {
-          case "⏯":
-            reaction.users.remove(user).catch(console.error);
-            if (!canModifyQueue(member)) return;
-            queue.connection.dispatcher.end();
-            play(queueConstruct.songs[0], message);
-            queue.textChannel.send(`${user} ⏯ started the playlist`).catch(console.error);
-            collector.stop();
-            break;
-  
-          default:
-            reaction.users.remove(user).catch(console.error);
-            break;
-        }
-      });
-  }
 };
