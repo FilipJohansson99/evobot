@@ -23,9 +23,15 @@ client.on("ready", () => {
     client.user.setActivity("Emil's mom on pornhub", {
     type: "WATCHING", 
   });
+  if (message.channel.id === '384501410210906113') {
+    if (!message.author.id === '752358465682407475') {
+      message.delete();
+    }
+  };
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
+
 
 
 /**
@@ -40,11 +46,7 @@ for (const file of commandFiles) {
 client.on("message", async (message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
-  if (message.channel.id === '384501410210906113') {
-    if (!message.author.id === '752358465682407475') {
-      message.delete();
-    }
-  };
+
 
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;
