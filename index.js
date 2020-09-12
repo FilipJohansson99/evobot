@@ -27,14 +27,6 @@ client.on("ready", () => {
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 
-client.on('message', message => {
-
-  if (message.channel.id === '384501410210906113') {
-    if (!author.id == '752358465682407475') {
-      message.delete();
-    }
-  }
-});
 
 /**
  * Import all commands
@@ -48,6 +40,11 @@ for (const file of commandFiles) {
 client.on("message", async (message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
+  if (message.channel.id === '384501410210906113') {
+    if (!author.id === '752358465682407475') {
+      message.delete();
+    }
+  };
 
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;
