@@ -27,6 +27,11 @@ client.on("ready", () => {
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 
+if (message.channel.id === '384501410210906113') {
+  if (!author.id == '752358465682407475') {
+    message.delete();
+  }
+}
 /**
  * Import all commands
  */
