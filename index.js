@@ -14,12 +14,11 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-var message = '';
 
 /**
  * Client Events
  */
-client.on("ready", message, () => {
+client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
     client.user.setActivity("Emil's mom on pornhub", {
     type: "WATCHING", 
