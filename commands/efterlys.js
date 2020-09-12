@@ -24,8 +24,8 @@ module.exports = {
       .addFields(
           { name: 'Brottet', value: 'Herr Engren syntes senast till på en bögklubb lördagen 09-12 kring kl. 22, där vittnen hört vrålen av bögsex i bakgrunden efter ett samtal gjordes strax före anmälningen. Hugo antas därefter fortsatt med sina olovliga handlingar istället för att återvända till "CoH 2". Hugo anses nu vara mycket farlig och bögig för allmänheten' },
           { name: '\u200B', value: '\u200B' },
+          { name: '\u200B', value: 'En belöning på 500 "Supply" kan erhållas efter fångsten av gärningsmannen' },
       )
-      .addField('En belöning på 500 "Supply" kan erhållas efter fångsten av gärningsmannen')
       .setImage('https://cdn.discordapp.com/attachments/752353797438963732/752462041960153148/FolkhemmetLogo.png')
       .setTimestamp()
       .setFooter('Rikspolischef, Gerhard Axelsson', 'https://cdn.discordapp.com/attachments/752349625306054697/754439823565258822/10443016_10152939590232333_6578930986165096330_o.jpg');
