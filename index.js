@@ -41,7 +41,7 @@ client.on("message", async (message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
   if (message.channel.id === '384501410210906113') {
-    if (!author.id === '752358465682407475') {
+    if (!message.author.id === '752358465682407475') {
       message.delete();
     }
   };
