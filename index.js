@@ -23,15 +23,18 @@ client.on("ready", () => {
     client.user.setActivity("Emil's mom on pornhub", {
     type: "WATCHING", 
   });
-  if (message.channel.id === '384501410210906113') {
-    if (!message.author.id === '752358465682407475') {
-      message.delete();
-    }
-  };
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 
+client.on('message', message =>{
+
+  if (message.channel.id === '384501410210906113') {
+    if (!message.author.id === '752358465682407475') {
+      message.delete();
+    }
+  }
+});
 
 
 /**
