@@ -14,11 +14,12 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var message = '';
 
 /**
  * Client Events
  */
-client.on("ready", 'message', message, () => {
+client.on("ready", message, () => {
   console.log(`${client.user.username} ready!`);
     if (message.channel.id === '752349625306054697') {
     if (!message.author.id === '752358465682407475') {
