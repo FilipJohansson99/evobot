@@ -14,27 +14,25 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-var message = '';
 
 /**
  * Client Events
  */
 client.on("ready", message, () => {
   console.log(`${client.user.username} ready!`);
-    if (message.channel.id === '752349625306054697') {
-    if (!message.author.id === '752358465682407475') {
-      message.delete();
-      console.log(`removed message from ${author}`)
-    }
-  }
-
     client.user.setActivity("Emil's mom on pornhub", {
     type: "WATCHING", 
   });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
-
+client.on('message', message => {
+if (message.channel.id === '752349625306054697') {
+  if (!message.author.id === '752358465682407475') {
+    message.delete();
+    console.log(`removed message from ${author}`)
+  }
+}});
 
 
 
