@@ -18,7 +18,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Client Events
  */
-client.on("ready", () => {
+client.on("ready", 'message', message, () => {
   console.log(`${client.user.username} ready!`);
     if (message.channel.id === '752349625306054697') {
     if (!message.author.id === '752358465682407475') {
