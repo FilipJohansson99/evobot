@@ -88,9 +88,13 @@ module.exports = {
       if (serverQueue) {
         serverQueue.songs.push(song);
         if (!PRUNING)
-          message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
-            .catch(console.error);
+
+        const addedToQueue = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+        .setURL(`${song.url}`)
+        message.channel.send(addedToQueue);
+        console.catch(console.error);
       } else {
         queueConstruct.songs.push(song);
       }
