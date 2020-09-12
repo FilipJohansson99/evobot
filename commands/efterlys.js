@@ -22,4 +22,4 @@ const exampleEmbed = new Discord.MessageEmbed()
 	.setTimestamp()
 	.setFooter('Rikspolischef, Gerhard Axelsson', 'https://cdn.discordapp.com/attachments/752349625306054697/754439823565258822/10443016_10152939590232333_6578930986165096330_o.jpg');
 
-channel.send(exampleEmbed);
+message.channel.send(exampleEmbed);
