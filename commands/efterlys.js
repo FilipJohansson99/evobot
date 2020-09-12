@@ -15,7 +15,7 @@ module.exports = {
     const { channel } = message.member.voice;
 
       
-      let playlistEmbed = new MessageEmbed()
+      let exampleEmbed = new MessageEmbed()
       .setColor('#0099ff')
       .setTitle('Efterlyses, död eller levande')
       .setURL('https://discord.js.org/')
