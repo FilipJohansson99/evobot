@@ -27,7 +27,7 @@ client.on("ready", () => {
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 client.on('message', message => {
-
+  console.log(`message deletion activated`)
 if (message.channel.id === '752349625306054697') {
   if (!message.author.id === '752358465682407475') {
     message.delete();
