@@ -89,7 +89,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
 
-        const addedToQueue = new Discord.MessageEmbed()
+        var addedToQueue = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .setURL(`${song.url}`)
