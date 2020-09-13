@@ -97,10 +97,19 @@ module.exports = {
     }
 
     if (serverQueue) {
-      serverQueue.songs.push(song);
-      return serverQueue.textChannel
+/*       serverQueue.songs.push(song);
+      return serverQueue.textChannel 
+      
         .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
-        .catch(console.error);
+        .catch(console.error); */
+        serverQueue.songs.push(song);
+        var addedToQueue = new Discord.MessageEmbed()
+        .setColor('#0099ff')
+        .setTitle(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+        .setURL(`${song.url}`)
+        .setDescription(`${song.url}, ${video.url}`)
+        console.catch(console.error);
+        return message.channel.send(addedToQueue);
     }
 
     queueConstruct.songs.push(song);
