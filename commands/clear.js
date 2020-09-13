@@ -2,7 +2,7 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
   name: "clear",
-  aliases: ["q"],
+  aliases: ["cl"],
   description: "Removes all songs from playlist",
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);

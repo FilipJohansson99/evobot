@@ -109,7 +109,6 @@ module.exports = {
         .setColor('#0099ff')
         .setTitle(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .setURL(`${song.url}`)
-        console.catch(console.error);
         return message.channel.send(addedToQueue);
     }
 
