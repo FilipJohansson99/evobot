@@ -117,7 +117,7 @@ module.exports = {
         .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
         .setURL(`${song.url}`)
         .setTimestamp()
-        .setFooter(`${message.author.name}`);
+        .setFooter(`${discord.message.author.name}`);
         return message.channel.send(addedToQueue);
     }
 
