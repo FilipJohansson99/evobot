@@ -104,7 +104,7 @@ module.exports = {
       
         .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .catch(console.error); */
-
+        var author = message.author.name;
         var video_id = song.url.split('v=')[1];
         var ampersandPosition = video_id.indexOf('&');
         if(ampersandPosition != -1) {
@@ -117,7 +117,7 @@ module.exports = {
         .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
         .setURL(`${song.url}`)
         .setTimestamp()
-        .setFooter(`${discord.message.author.name}`);
+        .setFooter(`${author}`);
         return message.channel.send(addedToQueue);
     }
 
