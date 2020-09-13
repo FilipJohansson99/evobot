@@ -104,6 +104,12 @@ module.exports = {
       
         .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .catch(console.error); */
+
+        var video_id = song.url.split('v=')[1];
+        var ampersandPosition = video_id.indexOf('&');
+        if(ampersandPosition != -1) {
+          video_id = video_id.substring(0, ampersandPosition);
+        };
         serverQueue.songs.push(song);
         var addedToQueue = new Discord.MessageEmbed()
         .setColor('#0099ff')
