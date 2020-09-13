@@ -112,11 +112,11 @@ module.exports = {
         serverQueue.songs.push(song);
         var addedToQueue = new Discord.MessageEmbed()
         .setColor('#0099ff')
-        .setTitle(`✅ **${song.title}** has been added to the queue`)
+        .setTitle(`✅ **${song.title}**`)
         .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
         .setURL(`${song.url}`)
         .setTimestamp()
-        .setFooter(`Added by ${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
+        .setFooter(`Added to queue by ${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
         return message.channel.send(addedToQueue);
     }
 

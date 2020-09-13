@@ -83,7 +83,8 @@ module.exports = {
       .setURL(`${song.url}`)
       .setDescription(`${message.author}`)
       .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter(`Added to queue by ${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
 
       var playingMessage = await queue.textChannel.send(embeddedMessage);
       await playingMessage.react("⏭");
