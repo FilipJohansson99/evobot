@@ -116,7 +116,7 @@ module.exports = {
         .setThumbnail(`https://img.youtube.com/vi/${video_id}/0.jpg`)
         .setURL(`${song.url}`)
         .setTimestamp()
-        .setFooter(`Added by ${author.name}`);
+        .setFooter(`Added by ${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
         return message.channel.send(addedToQueue);
     }
 
