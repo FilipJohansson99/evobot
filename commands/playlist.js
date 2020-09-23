@@ -104,7 +104,8 @@ module.exports = {
       .setTitle(`${playlist.title}`)
       .setURL(playlist.url)
       .setColor("#F8AA2A")
-      .setTimestamp();
+      .setTimestamp()
+      .setFooter(`Queued by ${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
 
     if (!PRUNING) {
       playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
