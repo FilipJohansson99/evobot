@@ -11,7 +11,7 @@ module.exports = {
   name: "playnow",
   cooldown: 3,
   aliases: ["pn"],
-  description: "Plays audio from YouTube",
+  description: "Places audio from YouTube first in queue",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
