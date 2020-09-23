@@ -109,7 +109,8 @@ module.exports = {
         if(ampersandPosition != -1) {
           video_id = video_id.substring(0, ampersandPosition);
         };
-        serverQueue.songs.splice(1, 0, song);
+        serverQueue.songs.unshift(song);
+        serverQueue.songs.unshift[1];
         var addedToQueue = new Discord.MessageEmbed()
         .setColor('#0099ff')
         .setTitle(`✅ **${song.title}**`)
@@ -120,7 +121,8 @@ module.exports = {
         return message.channel.send(addedToQueue);
     }
 
-    queueConstruct.songs.splice(1, 0, song);
+    queueConstruct.songs.unshift(song);
+    queueConstruct.songs.unshift[1];
     message.client.queue.set(message.guild.id, queueConstruct);
 
     try {
