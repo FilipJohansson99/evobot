@@ -78,7 +78,7 @@ module.exports = {
         
         
         )
-        .setFooter(`${playlist.url}`)
+        .setFooter(``)
         message.channel.send(playlistEmbed);
     
       }
