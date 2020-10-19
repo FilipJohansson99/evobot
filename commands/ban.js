@@ -15,7 +15,7 @@ module.exports = {
     const { channel } = message.member.voice;
     const taggedUser = message.mentions.users.first();
 
-    var Author = "Banna " + taggedUser + "?";
+    var Author = "Banna " + taggedUser.username + "?";
     var Title = 'Verifiera Bannlysning';
 
       let exampleEmbed = new MessageEmbed()
