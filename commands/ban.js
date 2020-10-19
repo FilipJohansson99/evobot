@@ -24,10 +24,9 @@ module.exports = {
       .setURL('https://www.facebook.com/marcus.jarliniusmalmquist/')
       .setAuthor(Author)
       .setDescription('Klicka på länken för att varifiera ban.')
-      .setThumbnail('https://cdn.discordapp.com/attachments/752349625306054697/762625684748763146/48356487_1974984045883590_1941520866437234688_n.jpg')
-      .setImage('https://cdn.discordapp.com/attachments/752349625306054697/762623550720442368/992205.png')
+      .setThumbnail(`${message.taggedUser.displayAvatarURL({ format: 'png', dynamic: true })}`)
       .setTimestamp()
-      .setFooter('Rikspolischef, Gerhard Axelsson', 'https://cdn.discordapp.com/attachments/752349625306054697/754439823565258822/10443016_10152939590232333_6578930986165096330_o.jpg');
+      .setFooter(`${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
         message.channel.send(exampleEmbed);
     
       }
