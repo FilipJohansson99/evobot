@@ -13,14 +13,18 @@ module.exports = {
   async execute(message, args) {
     const { PRUNING } = require("../config.json");
     const { channel } = message.member.voice;
-    const  användare  = message.mentions.users
+    const taggedUser = message.mentions.users.first();
+    const user = args;
 
-    
+    var Author = "Banna " + user + "?";
+    var Title = 'Verifiera Bannlysning';
+
       let exampleEmbed = new MessageEmbed()
       .setColor('#0099ff')
-      .setTitle('**Bannlysa', användare, '?**' )
+      .setTitle(Title)
       .setURL('https://www.facebook.com/marcus.jarliniusmalmquist/')
-      .setAuthor('Deserterare efterlyst för CoH-flykt')
+      .setAuthor(Author)
+      .setDescription('Klicka på länken för att varifiera ban.')
       .setThumbnail('https://cdn.discordapp.com/attachments/752349625306054697/762625684748763146/48356487_1974984045883590_1941520866437234688_n.jpg')
       .setImage('https://cdn.discordapp.com/attachments/752349625306054697/762623550720442368/992205.png')
       .setTimestamp()
