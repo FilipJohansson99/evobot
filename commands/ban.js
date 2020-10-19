@@ -24,7 +24,7 @@ module.exports = {
       .setURL('https://www.facebook.com/marcus.jarliniusmalmquist/')
       .setAuthor(Author)
       .setDescription('Klicka på länken för att varifiera ban.')
-      .setThumbnail(`${message.taggedUser.displayAvatarURL({ format: 'png', dynamic: true })}`)
+      .setThumbnail(message.taggedUser.displayAvatarURL({ format: 'png', dynamic: true }))
       .setTimestamp()
       .setFooter(`${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
         message.channel.send(exampleEmbed);
