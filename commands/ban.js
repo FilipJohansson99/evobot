@@ -21,7 +21,7 @@ module.exports = {
       let exampleEmbed = new MessageEmbed()
       .setColor('#0099ff')
       .setTitle(Title)
-      .setURL('steam://rungameid/231430')
+      .setURL('')
       .setAuthor(Author)
       .setDescription('Klicka på länken för att varifiera ban.')
       .setTimestamp()
