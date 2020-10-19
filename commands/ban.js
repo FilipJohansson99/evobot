@@ -26,7 +26,7 @@ module.exports = {
       .setDescription('Klicka på länken för att varifiera ban.')
       .setThumbnail(taggedUser.displayAvatarURL({ format: 'png', dynamic: true }))
       .setTimestamp()
-      .setFooter(`${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
+      .setFooter(`${message.author.tag}`,message.mentions.users.first().displayAvatarURL({ format: 'png', dynamic: true }));
         message.channel.send(exampleEmbed);
     
       }
