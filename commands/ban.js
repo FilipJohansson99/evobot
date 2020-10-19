@@ -14,9 +14,8 @@ module.exports = {
     const { PRUNING } = require("../config.json");
     const { channel } = message.member.voice;
     const taggedUser = message.mentions.users.first();
-    const user = args;
 
-    var Author = "Banna " + user + "?";
+    var Author = "Banna " + taggedUser + "?";
     var Title = 'Verifiera Bannlysning';
 
       let exampleEmbed = new MessageEmbed()
