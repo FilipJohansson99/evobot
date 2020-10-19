@@ -22,7 +22,7 @@ module.exports = {
       .setColor('#0099ff')
       .setTitle(Title)
       .setURL('')
-      .setAuthor(Author)
+      .setAuthor(Author, message.author.displayAvatarURL({ format: 'png', dynamic: true }), 'steam://rungameid/231430')
       .setDescription('Klicka på länken för att varifiera ban.')
       .setTimestamp()
       .setFooter(`${message.author.tag}`,message.author.displayAvatarURL({ format: 'png', dynamic: true }));
